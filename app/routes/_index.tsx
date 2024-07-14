@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const { submit, object, isLoading } = useObject({
+  const { submit, object, isLoading, error } = useObject({
     schema,
     api: '/api',
   });
@@ -41,6 +41,8 @@ export default function Index() {
             Generate Recipe
           </button>
         </div>
+
+        {!!error && <div className="text-red-500">{String(error)}</div>}
 
         {object?.recipe && (
           <div className="flex flex-col gap-2">
